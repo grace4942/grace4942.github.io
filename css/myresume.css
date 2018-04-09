@@ -15,3 +15,6 @@ h1 {
 	text-transform: none;
 	margin-top: 1rem;
 }
+.bg-primary{background-color:#003C9D!important}
+.text-primary{color:#003377!important}
+a{color:#003377}a:active,a:focus,a:hover{color:#2200AA}
