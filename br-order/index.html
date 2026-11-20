@@ -5,187 +5,155 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI 反擊計畫</title>
 <style>
-:root{--page:#101014}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--page)}
+html,body{margin:0;background:#101014}
 .page{max-width:750px;margin:0 auto;overflow:hidden}
-.sec{position:relative}
-.band{width:100%;background-size:100% auto;background-repeat:no-repeat;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
-.band.in{opacity:1;transform:none}
-.layer{position:absolute;pointer-events:none;opacity:0;transition:opacity .6s ease var(--d),transform .9s cubic-bezier(.34,1.56,.64,1) var(--d)}
-.layer img{display:block;width:100%;height:auto}
-.layer.pop{transform:translateY(30px) scale(.82)}
-.layer.swing{transform:translateX(-40px) rotate(-8deg)}
-.layer.photo{transform:scale(1.08);transition-duration:.9s,1.2s;transition-timing-function:ease,ease}
-.layer.in{opacity:1;transform:none}
-.layer.pop.in img{animation:float 3.6s ease-in-out calc(var(--d) + 1s) infinite}
-.layer.swing.in img{animation:wiggle 4s ease-in-out 1.2s infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg) scale(1.03)}}
-@media (prefers-reduced-motion:reduce){.band,.layer{opacity:1!important;transform:none!important;transition:none!important}.layer img{animation:none!important}}
+.sec{position:relative;width:100%}
+.base{display:block;width:100%;height:100%}
+.ill,.fx{position:absolute;pointer-events:none}
+.ill img{display:block;width:100%;height:auto}
+.fx{background-repeat:no-repeat;overflow:hidden;transform-origin:50% 50%}
+.ill.float img{animation:float 3.8s ease-in-out var(--d) infinite}
+.ill.swing img{transform-origin:20% 80%;animation:swing 3.2s ease-in-out infinite}
+.fx.pulse{animation:pulse 2.2s ease-in-out calc(var(--i)*-.37s) infinite}
+.fx.wiggle{animation:wiggle 2.6s ease-in-out calc(var(--i)*-.45s) infinite}
+.fx.flag{transform-origin:30% 95%}
+.fx.shine::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.75) 47%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.75) 53%,transparent 70%);background-size:250% 100%;background-position:150% 0;animation:shine 3.4s ease-in-out calc(var(--i)*-.6s) infinite}
+.fx.shine.soft::after{mix-blend-mode:overlay}
+.fx.beat{opacity:1}
+.fx.beat.run{animation:beat .7s cubic-bezier(.34,1.56,.64,1) calc(var(--i)*.12s) 1 both}
+.sec:not(.run) .ill img,.sec:not(.run) .fx,.sec:not(.run) .fx::after{animation-play-state:paused}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3%)}}
+@keyframes swing{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg) scale(1.04)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes wiggle{0%,100%{transform:scale(1.08) rotate(0)}25%{transform:scale(1.08) rotate(-5deg)}75%{transform:scale(1.08) rotate(5deg)}}
+@keyframes shine{0%,40%{background-position:150% 0}100%{background-position:-50% 0}}
+@keyframes beat{0%{transform:scale(1)}45%{transform:scale(1.18)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.ill img,.fx,.fx::after{animation:none!important}}
 </style>
 </head>
 <body>
 <main class="page">
-<section class="sec" style="background:#01040f">
-<div class="band" style="aspect-ratio:1500/349;background-image:url(./s01/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/245;background-image:url(./s01/base.webp);background-position:0 14.9337%"></div>
-<div class="band" style="aspect-ratio:1500/180;background-image:url(./s01/base.webp);background-position:0 24.7294%"></div>
-<div class="band" style="aspect-ratio:1500/445;background-image:url(./s01/base.webp);background-position:0 36.2190%"></div>
-<div class="band" style="aspect-ratio:1500/128;background-image:url(./s01/base.webp);background-position:0 49.6740%"></div>
-<div class="band" style="aspect-ratio:1500/279;background-image:url(./s01/base.webp);background-position:0 58.4889%"></div>
-<div class="band" style="aspect-ratio:1500/412;background-image:url(./s01/base.webp);background-position:0 74.9309%"></div>
-<div class="band" style="aspect-ratio:1500/124;background-image:url(./s01/base.webp);background-position:0 82.9129%"></div>
-<div class="band" style="aspect-ratio:1500/195;background-image:url(./s01/base.webp);background-position:0 90.5739%"></div>
-<div class="band" style="aspect-ratio:1500/225;background-image:url(./s01/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:25.152%;top:46.006%;width:52.667%;--d:0.00s"><img src="./s01/l9.webp" alt="" loading="lazy"></div>
-<div class="layer swing" style="left:5.25%;top:26.592%;width:18.067%;--d:0.15s"><img src="./s01/l13.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/2582">
+<img class="base" src="./s01/base.webp?v=2" alt="" width="1500" height="2582">
+<div class="ill float" style="left:25.162%;top:45.984%;width:52.667%;--d:0.0s"><img src="./s01/l9.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill swing" style="left:5.262%;top:26.57%;width:18.067%;--d:-0.9s"><img src="./s01/l13.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx pulse shine" style="left:12.667%;top:77.847%;width:76.667%;height:6.584%;background-image:url(./s01/base.webp?v=2);background-size:130.435% auto;background-position:54.286% 83.333%;border-radius:0.70% / 4.71%;--i:0"></div>
 </section>
-<section class="sec" style="background:#ffe13c">
-<div class="band" style="aspect-ratio:1500/529;background-image:url(./s02/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/95;background-image:url(./s02/base.webp);background-position:0 24.7081%"></div>
-<div class="band" style="aspect-ratio:1500/242;background-image:url(./s02/base.webp);background-position:0 31.2939%"></div>
-<div class="band" style="aspect-ratio:1500/331;background-image:url(./s02/base.webp);background-position:0 45.4593%"></div>
-<div class="band" style="aspect-ratio:1500/90;background-image:url(./s02/base.webp);background-position:0 55.7782%"></div>
-<div class="band" style="aspect-ratio:1500/184;background-image:url(./s02/base.webp);background-position:0 62.7193%"></div>
-<div class="band" style="aspect-ratio:1500/445;background-image:url(./s02/base.webp);background-position:0 82.1329%"></div>
-<div class="band" style="aspect-ratio:1500/95;background-image:url(./s02/base.webp);background-position:0 89.4909%"></div>
-<div class="band" style="aspect-ratio:1500/225;background-image:url(./s02/base.webp);background-position:0 100.0000%"></div>
-
+<section class="sec" style="aspect-ratio:1500/2236">
+<img class="base" src="./s02/base.webp?v=2" alt="" width="1500" height="2236" loading="lazy">
+<div class="fx pulse" style="left:53.667%;top:12.299%;width:16.333%;height:10.063%;background-image:url(./s02/base.webp?v=2);background-size:612.245% auto;background-position:64.143% 13.675%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx wiggle" style="left:8.667%;top:28.399%;width:9.000%;height:6.261%;background-image:url(./s02/base.webp?v=2);background-size:1111.111% auto;background-position:9.524% 30.296%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx wiggle" style="left:8.667%;top:43.292%;width:9.000%;height:6.261%;background-image:url(./s02/base.webp?v=2);background-size:1111.111% auto;background-position:9.524% 46.183%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx wiggle" style="left:8.667%;top:58.229%;width:9.000%;height:6.261%;background-image:url(./s02/base.webp?v=2);background-size:1111.111% auto;background-position:9.524% 62.118%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx wiggle" style="left:8.667%;top:72.898%;width:9.000%;height:6.485%;background-image:url(./s02/base.webp?v=2);background-size:1111.111% auto;background-position:9.524% 77.953%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx wiggle" style="left:86.333%;top:91.234%;width:11.000%;height:6.932%;background-image:url(./s02/base.webp?v=2);background-size:909.091% auto;background-position:97.004% 98.030%;border-radius:0.00% / 0.00%;--i:5"></div>
+<div class="fx shine soft" style="left:8.000%;top:84.302%;width:84.333%;height:11.852%;background-image:url(./s02/base.webp?v=2);background-size:118.577% auto;background-position:51.064% 95.637%;border-radius:0.00% / 0.00%;--i:6"></div>
 </section>
-<section class="sec" style="background:#ffffff">
-<div class="band" style="aspect-ratio:1500/586;background-image:url(./s03/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/133;background-image:url(./s03/base.webp);background-position:0 28.1190%"></div>
-<div class="band" style="aspect-ratio:1500/282;background-image:url(./s03/base.webp);background-position:0 37.1576%"></div>
-<div class="band" style="aspect-ratio:1500/130;background-image:url(./s03/base.webp);background-position:0 47.9636%"></div>
-<div class="band" style="aspect-ratio:1500/295;background-image:url(./s03/base.webp);background-position:0 58.8450%"></div>
-<div class="band" style="aspect-ratio:1500/125;background-image:url(./s03/base.webp);background-position:0 68.1644%"></div>
-<div class="band" style="aspect-ratio:1500/232;background-image:url(./s03/base.webp);background-position:0 78.1360%"></div>
-<div class="band" style="aspect-ratio:1500/191;background-image:url(./s03/base.webp);background-position:0 88.0059%"></div>
-<div class="band" style="aspect-ratio:1500/243;background-image:url(./s03/base.webp);background-position:0 100.0000%"></div>
-
+<section class="sec" style="aspect-ratio:1500/2217">
+<img class="base" src="./s03/base.webp?v=2" alt="" width="1500" height="2217" loading="lazy">
+<div class="fx wiggle" style="left:2.000%;top:4.511%;width:15.000%;height:6.540%;background-image:url(./s03/base.webp?v=2);background-size:666.667% auto;background-position:2.353% 4.826%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx beat" style="left:6.667%;top:26.387%;width:17.667%;height:6.089%;background-image:url(./s03/base.webp?v=2);background-size:566.038% auto;background-position:8.097% 28.098%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx beat" style="left:52.667%;top:26.387%;width:17.667%;height:6.089%;background-image:url(./s03/base.webp?v=2);background-size:566.038% auto;background-position:63.968% 28.098%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx beat" style="left:6.667%;top:45.196%;width:28.000%;height:5.683%;background-image:url(./s03/base.webp?v=2);background-size:357.143% auto;background-position:9.259% 47.920%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx beat" style="left:52.667%;top:45.196%;width:29.200%;height:5.683%;background-image:url(./s03/base.webp?v=2);background-size:342.466% auto;background-position:74.388% 47.920%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx beat" style="left:6.667%;top:64.051%;width:23.200%;height:6.180%;background-image:url(./s03/base.webp?v=2);background-size:431.034% auto;background-position:8.681% 68.269%;border-radius:0.00% / 0.00%;--i:5"></div>
+<div class="fx beat" style="left:52.667%;top:64.051%;width:27.200%;height:6.180%;background-image:url(./s03/base.webp?v=2);background-size:367.647% auto;background-position:72.344% 68.269%;border-radius:0.00% / 0.00%;--i:6"></div>
+<div class="fx shine" style="left:5.667%;top:88.408%;width:88.667%;height:5.954%;background-image:url(./s03/base.webp?v=2);background-size:112.782% auto;background-position:50.000% 94.005%;border-radius:0.00% / 0.00%;--i:7"></div>
 </section>
-<section class="sec" style="background:#101014">
-<div class="band" style="aspect-ratio:1500/304;background-image:url(./s04/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/652;background-image:url(./s04/base.webp);background-position:0 11.5326%"></div>
-<div class="band" style="aspect-ratio:1500/91;background-image:url(./s04/base.webp);background-position:0 29.9030%"></div>
-<div class="band" style="aspect-ratio:1500/779;background-image:url(./s04/base.webp);background-position:0 41.7298%"></div>
-<div class="band" style="aspect-ratio:1500/291;background-image:url(./s04/base.webp);background-position:0 60.9276%"></div>
-<div class="band" style="aspect-ratio:1500/277;background-image:url(./s04/base.webp);background-position:0 70.3089%"></div>
-<div class="band" style="aspect-ratio:1500/255;background-image:url(./s04/base.webp);background-position:0 78.9318%"></div>
-<div class="band" style="aspect-ratio:1500/332;background-image:url(./s04/base.webp);background-position:0 89.6143%"></div>
-<div class="band" style="aspect-ratio:1500/307;background-image:url(./s04/base.webp);background-position:0 100.0000%"></div>
-
+<section class="sec" style="aspect-ratio:1500/3288">
+<img class="base" src="./s04/base.webp?v=2" alt="" width="1500" height="3288" loading="lazy">
+<div class="fx pulse" style="left:60.000%;top:14.599%;width:36.000%;height:5.627%;background-image:url(./s04/base.webp?v=2);background-size:277.778% auto;background-position:93.750% 15.469%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx pulse" style="left:7.467%;top:47.597%;width:14.933%;height:6.904%;background-image:url(./s04/base.webp?v=2);background-size:669.643% auto;background-position:8.777% 51.127%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx pulse" style="left:34.467%;top:47.597%;width:15.200%;height:6.904%;background-image:url(./s04/base.webp?v=2);background-size:657.895% auto;background-position:40.645% 51.127%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx pulse" style="left:63.533%;top:47.597%;width:15.000%;height:6.904%;background-image:url(./s04/base.webp?v=2);background-size:666.667% auto;background-position:74.745% 51.127%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx pulse" style="left:67.467%;top:57.725%;width:21.867%;height:3.467%;background-image:url(./s04/base.webp?v=2);background-size:457.317% auto;background-position:86.348% 59.798%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx pulse" style="left:67.467%;top:65.328%;width:21.867%;height:3.528%;background-image:url(./s04/base.webp?v=2);background-size:457.317% auto;background-position:86.348% 67.718%;border-radius:0.00% / 0.00%;--i:5"></div>
+<div class="fx pulse" style="left:67.467%;top:73.084%;width:21.867%;height:3.528%;background-image:url(./s04/base.webp?v=2);background-size:457.317% auto;background-position:86.348% 75.757%;border-radius:0.00% / 0.00%;--i:6"></div>
+<div class="fx pulse" style="left:66.667%;top:80.748%;width:22.667%;height:3.498%;background-image:url(./s04/base.webp?v=2);background-size:441.176% auto;background-position:86.207% 83.675%;border-radius:0.00% / 0.00%;--i:7"></div>
+<div class="fx pulse shine" style="left:12.667%;top:89.964%;width:74.667%;height:5.687%;background-image:url(./s04/base.webp?v=2);background-size:133.929% auto;background-position:50.000% 95.389%;border-radius:8.04% / 48.13%;--i:8"></div>
 </section>
-<section class="sec" style="background:#f8f5ef">
-<div class="band" style="aspect-ratio:1500/297;background-image:url(./s05/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/338;background-image:url(./s05/base.webp);background-position:0 20.5252%"></div>
-<div class="band" style="aspect-ratio:1500/316;background-image:url(./s05/base.webp);background-position:0 43.2267%"></div>
-<div class="band" style="aspect-ratio:1500/621;background-image:url(./s05/base.webp);background-position:0 81.7010%"></div>
-<div class="band" style="aspect-ratio:1500/213;background-image:url(./s05/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:14.618%;top:27.748%;width:70.333%;--d:0.00s"><img src="./s05/l8.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/1785">
+<img class="base" src="./s05/base.webp?v=2" alt="" width="1500" height="1785" loading="lazy">
+<div class="ill float" style="left:14.628%;top:27.715%;width:70.333%;--d:0.0s"><img src="./s05/l8.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx shine soft" style="left:16.667%;top:14.286%;width:67.467%;height:13.445%;background-image:url(./s05/base.webp?v=2);background-size:148.221% auto;background-position:51.230% 16.505%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx beat" style="left:7.867%;top:69.356%;width:25.867%;height:17.927%;background-image:url(./s05/base.webp?v=2);background-size:386.598% auto;background-position:10.612% 84.505%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx beat" style="left:37.400%;top:69.356%;width:25.867%;height:17.927%;background-image:url(./s05/base.webp?v=2);background-size:386.598% auto;background-position:50.450% 84.505%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx beat" style="left:66.400%;top:69.356%;width:25.933%;height:17.927%;background-image:url(./s05/base.webp?v=2);background-size:385.604% auto;background-position:89.649% 84.505%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx pulse shine" style="left:13.667%;top:88.796%;width:72.667%;height:7.843%;background-image:url(./s05/base.webp?v=2);background-size:137.615% auto;background-position:50.000% 96.353%;border-radius:0.92% / 7.14%;--i:4"></div>
 </section>
-<section class="sec" style="background:#f8f5ef">
-<div class="band" style="aspect-ratio:1500/248;background-image:url(./s06/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/159;background-image:url(./s06/base.webp);background-position:0 9.4512%"></div>
-<div class="band" style="aspect-ratio:1500/274;background-image:url(./s06/base.webp);background-position:0 16.2216%"></div>
-<div class="band" style="aspect-ratio:1500/293;background-image:url(./s06/base.webp);background-position:0 27.3494%"></div>
-<div class="band" style="aspect-ratio:1500/168;background-image:url(./s06/base.webp);background-position:0 37.2467%"></div>
-<div class="band" style="aspect-ratio:1500/261;background-image:url(./s06/base.webp);background-position:0 45.2815%"></div>
-<div class="band" style="aspect-ratio:1500/163;background-image:url(./s06/base.webp);background-position:0 53.5496%"></div>
-<div class="band" style="aspect-ratio:1500/170;background-image:url(./s06/base.webp);background-position:0 59.9311%"></div>
-<div class="band" style="aspect-ratio:1500/240;background-image:url(./s06/base.webp);background-position:0 68.2658%"></div>
-<div class="band" style="aspect-ratio:1500/297;background-image:url(./s06/base.webp);background-position:0 79.4851%"></div>
-<div class="band" style="aspect-ratio:1500/167;background-image:url(./s06/base.webp);background-position:0 86.8884%"></div>
-<div class="band" style="aspect-ratio:1500/343;background-image:url(./s06/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:13.618%;top:14.621%;width:30.733%;--d:0.00s"><img src="./s06/l15.webp" alt="" loading="lazy"></div>
-<div class="layer pop" style="left:58.938%;top:14.259%;width:28.4%;--d:0.15s"><img src="./s06/l16.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/2783">
+<img class="base" src="./s06/base.webp?v=2" alt="" width="1500" height="2783" loading="lazy">
+<div class="ill float" style="left:13.629%;top:14.6%;width:30.733%;--d:0.0s"><img src="./s06/l15.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill float" style="left:58.948%;top:14.238%;width:28.4%;--d:-0.9s"><img src="./s06/l16.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx shine" style="left:6.000%;top:3.881%;width:20.333%;height:4.312%;background-image:url(./s06/base.webp?v=2);background-size:491.803% auto;background-position:7.531% 4.056%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx pulse" style="left:69.333%;top:52.641%;width:23.333%;height:4.635%;background-image:url(./s06/base.webp?v=2);background-size:428.571% auto;background-position:90.435% 55.200%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx pulse" style="left:69.333%;top:58.714%;width:23.333%;height:4.743%;background-image:url(./s06/base.webp?v=2);background-size:428.571% auto;background-position:90.435% 61.637%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx pulse" style="left:69.333%;top:64.894%;width:23.333%;height:4.563%;background-image:url(./s06/base.webp?v=2);background-size:428.571% auto;background-position:90.435% 67.997%;border-radius:0.00% / 0.00%;--i:3"></div>
 </section>
-<section class="sec" style="background:#f8f5ef">
-<div class="band" style="aspect-ratio:1500/719;background-image:url(./s07/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/142;background-image:url(./s07/base.webp);background-position:0 35.2970%"></div>
-<div class="band" style="aspect-ratio:1500/143;background-image:url(./s07/base.webp);background-position:0 42.2888%"></div>
-<div class="band" style="aspect-ratio:1500/143;background-image:url(./s07/base.webp);background-position:0 49.3124%"></div>
-<div class="band" style="aspect-ratio:1500/143;background-image:url(./s07/base.webp);background-position:0 56.3360%"></div>
-<div class="band" style="aspect-ratio:1500/299;background-image:url(./s07/base.webp);background-position:0 68.6170%"></div>
-<div class="band" style="aspect-ratio:1500/97;background-image:url(./s07/base.webp);background-position:0 76.3208%"></div>
-<div class="band" style="aspect-ratio:1500/114;background-image:url(./s07/base.webp);background-position:0 81.6465%"></div>
-<div class="band" style="aspect-ratio:1500/379;background-image:url(./s07/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:3.637%;top:0.565%;width:22.067%;--d:0.00s"><img src="./s07/l11.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/2179">
+<img class="base" src="./s07/base.webp?v=2" alt="" width="1500" height="2179" loading="lazy">
+<div class="ill float" style="left:3.647%;top:0.539%;width:22.067%;--d:0.0s"><img src="./s07/l11.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx wiggle" style="left:83.667%;top:17.210%;width:12.800%;height:10.877%;background-image:url(./s07/base.webp?v=2);background-size:781.250% auto;background-position:95.948% 19.310%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx wiggle" style="left:6.000%;top:60.349%;width:12.133%;height:9.867%;background-image:url(./s07/base.webp?v=2);background-size:824.176% auto;background-position:6.829% 66.955%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx pulse" style="left:7.333%;top:83.892%;width:24.000%;height:7.572%;background-image:url(./s07/base.webp?v=2);background-size:416.667% auto;background-position:9.649% 90.765%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx pulse shine soft" style="left:32.000%;top:84.901%;width:58.000%;height:6.654%;background-image:url(./s07/base.webp?v=2);background-size:172.414% auto;background-position:76.190% 90.954%;border-radius:0.00% / 0.00%;--i:3"></div>
 </section>
-<section class="sec" style="background:#262626">
-<div class="band" style="aspect-ratio:1500/259;background-image:url(./s08/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/172;background-image:url(./s08/base.webp);background-position:0 7.3392%"></div>
-<div class="band" style="aspect-ratio:1500/427;background-image:url(./s08/base.webp);background-position:0 13.1643%"></div>
-<div class="band" style="aspect-ratio:1500/129;background-image:url(./s08/base.webp);background-position:0 24.0202%"></div>
-<div class="band" style="aspect-ratio:1500/181;background-image:url(./s08/base.webp);background-position:0 28.0398%"></div>
-<div class="band" style="aspect-ratio:1500/240;background-image:url(./s08/base.webp);background-position:0 33.7475%"></div>
-<div class="band" style="aspect-ratio:1500/134;background-image:url(./s08/base.webp);background-position:0 39.4729%"></div>
-<div class="band" style="aspect-ratio:1500/128;background-image:url(./s08/base.webp);background-position:0 43.1570%"></div>
-<div class="band" style="aspect-ratio:1500/192;background-image:url(./s08/base.webp);background-position:0 47.5919%"></div>
-<div class="band" style="aspect-ratio:1500/153;background-image:url(./s08/base.webp);background-position:0 52.4803%"></div>
-<div class="band" style="aspect-ratio:1500/257;background-image:url(./s08/base.webp);background-position:0 58.5075%"></div>
-<div class="band" style="aspect-ratio:1500/198;background-image:url(./s08/base.webp);background-position:0 64.8587%"></div>
-<div class="band" style="aspect-ratio:1500/386;background-image:url(./s08/base.webp);background-position:0 74.5098%"></div>
-<div class="band" style="aspect-ratio:1500/234;background-image:url(./s08/base.webp);background-position:0 82.3767%"></div>
-<div class="band" style="aspect-ratio:1500/168;background-image:url(./s08/base.webp);background-position:0 87.4611%"></div>
-<div class="band" style="aspect-ratio:1500/348;background-image:url(./s08/base.webp);background-position:0 97.1667%"></div>
-<div class="band" style="aspect-ratio:1500/95;background-image:url(./s08/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:15.561%;top:31.123%;width:24.067%;--d:0.00s"><img src="./s08/l4.webp" alt="" loading="lazy"></div>
-<div class="layer pop" style="left:61.552%;top:12.238%;width:22.867%;--d:0.15s"><img src="./s08/l5.webp" alt="" loading="lazy"></div>
-<div class="layer pop" style="left:59.242%;top:30.592%;width:25.867%;--d:0.30s"><img src="./s08/l6.webp" alt="" loading="lazy"></div>
-<div class="layer pop" style="left:14.335%;top:11.655%;width:26.933%;--d:0.45s"><img src="./s08/l7.webp" alt="" loading="lazy"></div>
-<div class="layer pop" style="left:64.99%;top:53.645%;width:30.267%;--d:0.60s"><img src="./s08/l10.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/3701">
+<img class="base" src="./s08/base.webp?v=2" alt="" width="1500" height="3701" loading="lazy">
+<div class="ill float" style="left:15.573%;top:31.108%;width:24.067%;--d:0.0s"><img src="./s08/l4.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill float" style="left:61.563%;top:12.223%;width:22.867%;--d:-0.9s"><img src="./s08/l5.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill float" style="left:59.254%;top:30.576%;width:25.867%;--d:-1.8s"><img src="./s08/l6.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill float" style="left:14.346%;top:11.639%;width:26.933%;--d:-2.7s"><img src="./s08/l7.webp?v=2" alt="" loading="lazy"></div>
+<div class="ill float" style="left:65.0%;top:53.629%;width:30.267%;--d:-3.6s"><img src="./s08/l10.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx wiggle" style="left:79.000%;top:0.811%;width:11.000%;height:5.458%;background-image:url(./s08/base.webp?v=2);background-size:909.091% auto;background-position:88.764% 0.857%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx beat" style="left:6.667%;top:55.120%;width:13.000%;height:5.188%;background-image:url(./s08/base.webp?v=2);background-size:769.231% auto;background-position:7.663% 58.136%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx wiggle flag" style="left:6.667%;top:62.145%;width:16.667%;height:7.160%;background-image:url(./s08/base.webp?v=2);background-size:600.000% auto;background-position:8.000% 66.938%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx wiggle flag" style="left:13.800%;top:69.927%;width:16.733%;height:7.079%;background-image:url(./s08/base.webp?v=2);background-size:597.610% auto;background-position:16.573% 75.254%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx wiggle flag" style="left:6.667%;top:79.573%;width:16.667%;height:6.755%;background-image:url(./s08/base.webp?v=2);background-size:600.000% auto;background-position:8.000% 85.338%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx wiggle flag" style="left:13.000%;top:87.949%;width:17.533%;height:7.106%;background-image:url(./s08/base.webp?v=2);background-size:570.342% auto;background-position:15.764% 94.677%;border-radius:0.00% / 0.00%;--i:5"></div>
 </section>
-<section class="sec" style="background:#1a1a1a">
-<div class="band" style="aspect-ratio:1500/259;background-image:url(./s09/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/195;background-image:url(./s09/base.webp);background-position:0 16.3098%"></div>
-<div class="band" style="aspect-ratio:1500/137;background-image:url(./s09/base.webp);background-position:0 27.5820%"></div>
-<div class="band" style="aspect-ratio:1500/174;background-image:url(./s09/base.webp);background-position:0 36.7309%"></div>
-<div class="band" style="aspect-ratio:1500/181;background-image:url(./s09/base.webp);background-position:0 47.7528%"></div>
-<div class="band" style="aspect-ratio:1500/201;background-image:url(./s09/base.webp);background-position:0 59.7977%"></div>
-<div class="band" style="aspect-ratio:1500/182;background-image:url(./s09/base.webp);background-position:0 71.6427%"></div>
-<div class="band" style="aspect-ratio:1500/454;background-image:url(./s09/base.webp);background-position:0 100.0000%"></div>
-
+<section class="sec" style="aspect-ratio:1500/1783">
+<img class="base" src="./s09/base.webp?v=2" alt="" width="1500" height="1783" loading="lazy">
+<div class="fx beat" style="left:9.200%;top:33.259%;width:8.267%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1209.677% auto;background-position:10.029% 35.744%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx beat" style="left:9.200%;top:43.522%;width:8.267%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1209.677% auto;background-position:10.029% 46.775%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx beat" style="left:9.200%;top:53.954%;width:8.267%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1209.677% auto;background-position:10.029% 57.987%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx beat" style="left:9.200%;top:64.610%;width:8.267%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1209.677% auto;background-position:10.029% 69.439%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx beat" style="left:9.200%;top:75.042%;width:8.267%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1209.677% auto;background-position:10.029% 80.651%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx wiggle" style="left:53.067%;top:33.259%;width:7.933%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1260.504% auto;background-position:57.639% 35.744%;border-radius:0.00% / 0.00%;--i:5"></div>
+<div class="fx wiggle" style="left:53.067%;top:43.522%;width:7.933%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1260.504% auto;background-position:57.639% 46.775%;border-radius:0.00% / 0.00%;--i:6"></div>
+<div class="fx wiggle" style="left:53.067%;top:53.954%;width:7.933%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1260.504% auto;background-position:57.639% 57.987%;border-radius:0.00% / 0.00%;--i:7"></div>
+<div class="fx wiggle" style="left:53.067%;top:64.610%;width:7.933%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1260.504% auto;background-position:57.639% 69.439%;border-radius:0.00% / 0.00%;--i:8"></div>
+<div class="fx wiggle" style="left:53.067%;top:75.042%;width:7.933%;height:6.955%;background-image:url(./s09/base.webp?v=2);background-size:1260.504% auto;background-position:57.639% 80.651%;border-radius:0.00% / 0.00%;--i:9"></div>
+<div class="fx shine" style="left:5.200%;top:88.054%;width:89.333%;height:8.188%;background-image:url(./s09/base.webp?v=2);background-size:111.940% auto;background-position:48.750% 95.907%;border-radius:0.00% / 0.00%;--i:10"></div>
 </section>
-<section class="sec" style="background:#f8f5ef">
-<div class="band" style="aspect-ratio:1500/249;background-image:url(./s10/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/315;background-image:url(./s10/base.webp);background-position:0 15.8196%"></div>
-<div class="band" style="aspect-ratio:1500/104;background-image:url(./s10/base.webp);background-position:0 31.5966%"></div>
-<div class="band" style="aspect-ratio:1500/352;background-image:url(./s10/base.webp);background-position:0 43.4613%"></div>
-<div class="band" style="aspect-ratio:1500/307;background-image:url(./s10/base.webp);background-position:0 64.4753%"></div>
-<div class="band" style="aspect-ratio:1500/151;background-image:url(./s10/base.webp);background-position:0 76.3521%"></div>
-<div class="band" style="aspect-ratio:1500/140;background-image:url(./s10/base.webp);background-position:0 84.5054%"></div>
-<div class="band" style="aspect-ratio:1500/137;background-image:url(./s10/base.webp);background-position:0 92.3516%"></div>
-<div class="band" style="aspect-ratio:1500/134;background-image:url(./s10/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:53.173%;top:32.164%;width:35.333%;--d:0.00s"><img src="./s10/l12.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/1889">
+<img class="base" src="./s10/base.webp?v=2" alt="" width="1500" height="1889" loading="lazy">
+<div class="ill float" style="left:53.184%;top:32.133%;width:35.333%;--d:0.0s"><img src="./s10/l12.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx wiggle" style="left:4.000%;top:13.870%;width:8.800%;height:7.835%;background-image:url(./s10/base.webp?v=2);background-size:1136.364% auto;background-position:4.386% 15.049%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx wiggle" style="left:35.267%;top:13.870%;width:8.800%;height:7.835%;background-image:url(./s10/base.webp?v=2);background-size:1136.364% auto;background-position:38.670% 15.049%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx wiggle" style="left:65.067%;top:13.870%;width:8.800%;height:7.835%;background-image:url(./s10/base.webp?v=2);background-size:1136.364% auto;background-position:71.345% 15.049%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx shine" style="left:15.467%;top:44.733%;width:25.867%;height:6.617%;background-image:url(./s10/base.webp?v=2);background-size:386.598% auto;background-position:20.863% 47.902%;border-radius:0.00% / 0.00%;--i:3"></div>
+<div class="fx pulse" style="left:18.667%;top:52.673%;width:57.667%;height:9.370%;background-image:url(./s10/base.webp?v=2);background-size:173.410% auto;background-position:44.094% 58.119%;border-radius:0.00% / 0.00%;--i:4"></div>
+<div class="fx pulse shine" style="left:18.133%;top:68.978%;width:64.067%;height:7.570%;background-image:url(./s10/base.webp?v=2);background-size:156.087% auto;background-position:50.464% 74.628%;border-radius:7.28% / 48.95%;--i:5"></div>
+<div class="fx pulse" style="left:55.867%;top:79.142%;width:25.467%;height:6.194%;background-image:url(./s10/base.webp?v=2);background-size:392.670% auto;background-position:74.955% 84.368%;border-radius:0.00% / 0.00%;--i:6"></div>
 </section>
-<section class="sec" style="background:#f8f5ef">
-<div class="band" style="aspect-ratio:1500/144;background-image:url(./s11/base.webp);background-position:0 0.0000%"></div>
-<div class="band" style="aspect-ratio:1500/154;background-image:url(./s11/base.webp);background-position:0 6.3130%"></div>
-<div class="band" style="aspect-ratio:1500/388;background-image:url(./s11/base.webp);background-position:0 14.5579%"></div>
-<div class="band" style="aspect-ratio:1500/160;background-image:url(./s11/base.webp);background-position:0 30.1538%"></div>
-<div class="band" style="aspect-ratio:1500/402;background-image:url(./s11/base.webp);background-position:0 41.6134%"></div>
-<div class="band" style="aspect-ratio:1500/202;background-image:url(./s11/base.webp);background-position:0 55.8889%"></div>
-<div class="band" style="aspect-ratio:1500/170;background-image:url(./s11/base.webp);background-position:0 64.0177%"></div>
-<div class="band" style="aspect-ratio:1500/172;background-image:url(./s11/base.webp);background-position:0 71.5864%"></div>
-<div class="band" style="aspect-ratio:1500/92;background-image:url(./s11/base.webp);background-position:0 76.4831%"></div>
-<div class="band" style="aspect-ratio:1500/233;background-image:url(./s11/base.webp);background-position:0 85.5586%"></div>
-<div class="band" style="aspect-ratio:1500/139;background-image:url(./s11/base.webp);background-position:0 92.2038%"></div>
-<div class="band" style="aspect-ratio:1500/179;background-image:url(./s11/base.webp);background-position:0 100.0000%"></div>
-<div class="layer pop" style="left:4.165%;top:61.724%;width:27.733%;--d:0.00s"><img src="./s11/l27.webp" alt="" loading="lazy"></div>
+<section class="sec" style="aspect-ratio:1500/2435">
+<img class="base" src="./s11/base.webp?v=2" alt="" width="1500" height="2435" loading="lazy">
+<div class="ill float" style="left:4.176%;top:61.7%;width:27.667%;--d:0.0s"><img src="./s11/l27.webp?v=2" alt="" loading="lazy"></div>
+<div class="fx shine soft" style="left:35.333%;top:79.466%;width:55.867%;height:4.846%;background-image:url(./s11/base.webp?v=2);background-size:178.998% auto;background-position:80.060% 83.513%;border-radius:0.00% / 0.00%;--i:0"></div>
+<div class="fx pulse" style="left:2.533%;top:84.394%;width:7.667%;height:5.298%;background-image:url(./s11/base.webp?v=2);background-size:1304.348% auto;background-position:2.744% 89.115%;border-radius:0.00% / 0.00%;--i:1"></div>
+<div class="fx pulse" style="left:88.533%;top:84.394%;width:7.800%;height:5.298%;background-image:url(./s11/base.webp?v=2);background-size:1282.051% auto;background-position:96.023% 89.115%;border-radius:0.00% / 0.00%;--i:2"></div>
+<div class="fx pulse shine" style="left:12.333%;top:85.832%;width:75.000%;height:7.803%;background-image:url(./s11/base.webp?v=2);background-size:133.333% auto;background-position:49.333% 93.096%;border-radius:8.44% / 50.00%;--i:3"></div>
 </section>
 </main>
 <script>
 (function(){
-  var els=document.querySelectorAll('.band,.layer');
-  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-  },{rootMargin:'0px 0px -6% 0px',threshold:0.05});
-  els.forEach(function(e){io.observe(e)});
-  function atEnd(){if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-40){els.forEach(function(e){e.classList.add('in')});window.removeEventListener('scroll',atEnd);}}
-  window.addEventListener('scroll',atEnd,{passive:true});atEnd();
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.sec,.fx.beat').forEach(function(e){e.classList.add('run')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('run',e.isIntersecting)})},{threshold:0});
+  document.querySelectorAll('.sec').forEach(function(s){io.observe(s)});
+  var bo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('run');bo.unobserve(e.target)}})},{threshold:.6});
+  document.querySelectorAll('.fx.beat').forEach(function(b){bo.observe(b)});
 })();
 </script>
 </body>
